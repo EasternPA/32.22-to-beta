@@ -14,7 +14,7 @@ Node-RED is a visual programming tool that greatly simplifies the act of assembl
 
 Clone the repository, fire up Node-RED, click the 3-bar "hamburger" menu in the upper right corner, and click on Import. Navigate to the location where you cloned the repo and import the file. Open the debug window, click on the red Deploy button in the upper right corner, and you will see at least the first of the two example lines shown below in the Output section. You will see the number of vehicles running 2021.32.22 and any Model 3 LR AWDs that have recently been upgraded from 2021.32.22 to 2021.36.5.3.
 
-### How it works
+### What is the purpose of this?
 
 There are two primary purposes of the flow. First is to count the number of vehicles reported by the TeslaScope website as currently running 2021.32.22 -- the primary version that is ultimately upgraded to FSD Beta. Second, I wanted to receive a notification whenever a vehicle that is effectively identical to mine is upgraded from 2021.32.22 to 2021.36.5.3.
 
