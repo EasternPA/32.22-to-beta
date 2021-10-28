@@ -35,3 +35,7 @@ Looking at the trigger node that kicks off both functions, I configured the "Go"
 It is important to be respectful of other peoples' resources here.
 
 Finally, I terminated the functions with a print to the debug window, but it is up to you to do something different with the output. You may wish to trigger a pop-up on your phone, send yourself a text message, or post a message to or send a private message via Twitter. The debug window is just a dummy output that is useful for functional test but is not very useful beyond that.
+
+### License
+
+This software is published under the Apache 2.0 license. Do whatever you please with it, but respect TeslaScope's wishes if they ask you to reduce the refresh frequency.
