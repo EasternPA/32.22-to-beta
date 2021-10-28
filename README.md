@@ -26,6 +26,18 @@ The second function in this flow requires ingesting TeslaScope's detail page for
 
 With the page ingested, I used an html parser node to pull in the html contents. Then, I passed those contents on to a change node that only retained object 174 on the page -- which is the table showing the detail of all vehicles that received that update. With the table captured, I ran it through a split node to break it up into lines, a function node that trims leading and trailing white space from all of the table contents, a join node that converts the cleaned up text lines into an array, a switch node that only retains records where the first field matches 2021.32.22 and another switch node that only retains records where the second field matches "Model 3 AWD LR". With the number of "interesting" records reduced to cars configured identically to mine, I send the remaining records to a different debug node which, again, sends the output to the debug window.
 
+### Output
+
+The two functions in this flow dump very simple output. First, if the number of vehicles running 2021.32.22 has changed since the last time it was reported, the function will dump (as an example)
+
+`1336 on 2021.32.22`
+
+Second, any time a Model 3 AWD LR is upgraded from 2021.32.22 to 2021.36.5.3 (aka FSD Beta 10.3.1), the second funtion will dump the details of that vehicle as a printed array, for example
+
+`2021.32.22,Model 3 AWD LR,3.0,United States,1 day ago`
+
+The output is very basic and is not pretty at all.
+
 ### Notes
 
 If your car moves from 2021.32.22 to 2021.32.25 instead of Beta 10.3.1 or 2021.36.5.3, you may easily modify the first switch node so that it looks for that firmware version instead of the one my car was running. Also, once Beta 10.3.1 gets replaced by an update, you will want to modify the end of the URL that the second function ingests to match the newest firmware being rolled out.
