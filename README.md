@@ -42,7 +42,7 @@ Second, any time a Model 3 AWD LR is upgraded from 2021.32.22 to 2021.36.5.3, th
 
 `2021.32.22,Model 3 AWD LR,3.0,United States,1 day ago`
 
-The array fields are Prior Firmware Version, Vehicle Model and Trim Level Description, Autopilot Hardware Version, Country, and time since the update. The output is very basic and is not pretty at all.
+The array fields are Prior Firmware Version, Vehicle Model and Trim Level Description, Autopilot Hardware Version, Country, and time since the update. The output is very basic and is not pretty at all. I could have just printed "Another one!" but I wanted to make sure I saw how long ago the update occured, represented in minutes, hours, or eventually days.
 
 ### Notes
 
