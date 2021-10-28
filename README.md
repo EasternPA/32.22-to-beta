@@ -12,11 +12,11 @@ Node-RED is a visual programming tool that greatly simplifies the act of assembl
 
 ### How to use it
 
-Clone the repository, fire up Node-RED, click the 3-bar "hamburger" menu in the upper right corner, and click on Import. Navigate to the location where you cloned the repo and import the file. Open the debug window, click on the red Deploy button in the upper right corne, and you will see at least the first of the two example lines shown below in the Output section. You will see the number of vehicles running 2021.32.22 and any Model 3 LR AWDs that have recently been upgraded from 2021.32.22 to 2021.36.5.3 akd FSD Beta 10.3.1.
+Clone the repository, fire up Node-RED, click the 3-bar "hamburger" menu in the upper right corner, and click on Import. Navigate to the location where you cloned the repo and import the file. Open the debug window, click on the red Deploy button in the upper right corner, and you will see at least the first of the two example lines shown below in the Output section. You will see the number of vehicles running 2021.32.22 and any Model 3 LR AWDs that have recently been upgraded from 2021.32.22 to 2021.36.5.3.
 
 ### How it works
 
-There are two primary purposes of the flow. First is to count the number of vehicles reported by the TeslaScope website as currently running 2021.32.22 -- the primary version that is ultimately upgraded to FSD Beta. Second, I wanted to receive a notification whenever a vehicle that is effectively identical to mine is upgraded from 2021.32.22 to FSD Beta 10.3.1.
+There are two primary purposes of the flow. First is to count the number of vehicles reported by the TeslaScope website as currently running 2021.32.22 -- the primary version that is ultimately upgraded to FSD Beta. Second, I wanted to receive a notification whenever a vehicle that is effectively identical to mine is upgraded from 2021.32.22 to 2021.36.5.3.
 
 #### Vehicles Running 2021.32.22
 
@@ -24,7 +24,7 @@ The first function requires ingesting TeslaScope's detail page for the 2021.32.2
 
 With the page ingested, I used an html parser node to pull in the html contents of that page. I then used a Change node to only retain item 76 from the fetched page. That contains a sentence listing the number of vehicles currently running this version. I then split that content into an array. Next, as I traverse the array, I convert each entry from a text string into a numeric value. If the resulting numeric value is greater than 0, I convert the value back to a string and append the text " on 32.22" to the end and print it out. Finally, I pass the payload through a filter node (previously called Replace By Exception or RBE). This ensures that the resulting message will be passed only if it has not changed. Then the payload is passed to the debug node, which dumps the payload to the debug window.
 
-#### Any Model 3 LR AWD moving from 2021.32.22 to 2021.36.5.3 aka FSD Beta 10.3.1
+#### Any Model 3 LR AWD moving from 2021.32.22 to 2021.36.5.3
 
 The second function in this flow requires ingesting TeslaScope's detail page for the 2021.36.5.3 firmware, found here https://teslascope.com/teslapedia/software/2021.36.5.3
 
@@ -36,7 +36,7 @@ The two functions in this flow dump very simple output. First, if the number of 
 
 `1336 on 2021.32.22`
 
-Second, any time a Model 3 AWD LR is upgraded from 2021.32.22 to 2021.36.5.3 (aka FSD Beta 10.3.1), the second funtion will dump the details of that vehicle as a printed array, for example
+Second, any time a Model 3 AWD LR is upgraded from 2021.32.22 to 2021.36.5.3, the second funtion will dump the details of that vehicle as a printed array, for example
 
 `2021.32.22,Model 3 AWD LR,3.0,United States,1 day ago`
 
@@ -44,7 +44,7 @@ The array fields are Prior Firmware Version, Vehicle Model and Trim Level Descri
 
 ### Notes
 
-If your car moves from 2021.32.22 to 2021.32.25 instead of Beta 10.3.1 or 2021.36.5.3, you may easily modify the first switch node so that it looks for that firmware version instead of the one my car was running. Also, once Beta 10.3.1 gets replaced by an update, you will want to modify the end of the URL that the second function ingests to match the newest firmware being rolled out.
+If your car moves from 2021.32.22 to 2021.32.25 instead of 2021.36.5.3, you may easily modify the first switch node in the second function so that it looks for that firmware version instead of the one my car was running. Also, once 2021.36.5.3 gets replaced by a newer version of FSD Beta, you will want to modify the end of the URL that the second function ingests to match the newest firmware being rolled out.
 
 Looking at the trigger node that kicks off both functions, I configured the "Go" button to repeat at the top of every hour between 4am and 8pm since I knew I would only react to early indications of movement during those hours. There's no point in querying TeslaScope's web page more frequently than that and there's no point in querying their site if you're not planning to take any action as a result of any notification you may receive.
 
