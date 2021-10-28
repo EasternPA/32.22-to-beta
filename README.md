@@ -34,7 +34,7 @@ With the page ingested, I used an html parser node to pull in the html contents.
 
 The two functions in this flow dump very simple output. First, if the number of vehicles running 2021.32.22 has changed since the last time it was reported, the function will dump the new value (as shown in this example)
 
-`1336 on 2021.32.22`
+`1336 on 32.22`
 
 Second, any time a Model 3 AWD LR is upgraded from 2021.32.22 to 2021.36.5.3, the second funtion will dump the details of that vehicle as a printed array, for example
 
