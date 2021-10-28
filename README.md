@@ -1,2 +1,2 @@
 # 32.22-to-beta
-Node RED flow to monitor TeslaScope for hints that Model 3s on 32.22 are getting Beta
+An early warning system that Teslas on 2021.32.22 are receiving Beta
