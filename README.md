@@ -2,9 +2,9 @@
 
 While waiting for Tesla to roll out Full Self Driving (FSD) Beta to my car, I was constantly refreshing web pages from websites like TeslaScope that showed how many cars were on each firmware revision and the prior version that the current version replaced. TeslaScope is also kind enough to show fairly detailed configurations of the vehicles receiving the updated firmware.
 
-### 32.22 to Beta
+### Firmware update path
 
-With a little investigation, I saw that most vehicles that received Beta came from 2021.32.22 and 2021.32.25. All of the vehicles on 2021.32.25 came from 2021.32.22 but most of the vehicles that received Beta were directly upgraded from 2021.32.22. For my specific situation, I needed to watch the number of vehicles still running 2021.32.22 and I wanted to know when a vehicle basically identical to mine (Model 3 Long Range Dual Motor aka AWD) was upgraded from 2021.32.22 to FSD Beta 2021.36.5.3 aka 10.3.1.
+Back on September 25th, Tesla pushed firmware 2021.32.22 to every car with the FSD option purchased or an active FSD subscription. As drivers earned quailfying safety scores over a minimum distance travelled, Tesla started updating those vehicles with 2021.36.5. Some vehicles were updated from 2021.32.22 to 2021.32.25, but by and large, any vehicles that were updated likely received an FSD Beta version. My car never left 2021.32.22, so I needed to watch that population fairly closely. Since any Tesla with FSD in the US could run 2021.32.22, though, I specifically wanted to know each time a vehicle similar to mine (Model 3 Long Range Dual Motor aka AWD) was upgraded from 2021.32.22 to 2021.36.5.3 aka FSD Beta 10.3.1. Those two data points gave me an early indication of when Tesla was deploying FSD Beta to cars very similar to mine.
 
 ### Node-RED
 
