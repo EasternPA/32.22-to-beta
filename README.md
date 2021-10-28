@@ -26,7 +26,7 @@ With the page ingested, I used an html parser node to pull in the html contents 
 
 #### Any Model 3 LR AWD moving from 2021.32.22 to 2021.36.5.3
 
-It is important to note that the number of vehicles running 2021.32.22 is not enough to tell the whole story. That could be on any model Tesla. I also needed to see when a car just like mine was upgraded.
+It is important to note that the number of vehicles running 2021.32.22 is not enough to tell the whole story. That could be on any model Tesla. I also needed to see when a car just like mine received the upgrade I was waiting for.
 
 The second function in this flow requires ingesting TeslaScope's detail page for the 2021.36.5.3 firmware, found here https://teslascope.com/teslapedia/software/2021.36.5.3
 
