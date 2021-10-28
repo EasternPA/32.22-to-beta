@@ -10,6 +10,10 @@ With a little investigation, I saw that most vehicles that received Beta came fr
 
 Node-RED is a visual programming tool that greatly simplifies the act of assembling small, simple scripts. Node-RED also includes numerous modules (called Nodes) and integrations with external tools and sites. Node-RED enables rapid prototyping of functional code by dragging and dropping nodes onto the design space and allows for customization of the code using a variety of programming or scripting languages. A collection of Nodes that interoperate with one another on a single tab in the editor is called a flow. I have exported the flow that I built and published it here as json code.
 
+### How to use it
+
+Clone the repository, fire up Node-RED, click the 3-bar "hamburger" menu in the upper right corner, and click on Import. Navigate to the location where you cloned the repo and import the file. Open the debug window, click on the red Deploy button in the upper right corne, and you will see at least the first of the two example lines shown below in the Output section. You will see the number of vehicles running 2021.32.22 and any Model 3 LR AWDs that have recently been upgraded to 2021.36.5.3 akd FSD Beta 10.3.1.
+
 ### How it works
 
 There are two primary purposes of the flow. First is to count the number of vehicles reported by the TeslaScope website as currently running 2021.32.22 -- the primary version that is ultimately upgraded to FSD Beta. Second, I wanted to receive a notification whenever a vehicle that is effectively identical to mine is upgraded from 2021.32.22 to FSD Beta 10.3.1.
