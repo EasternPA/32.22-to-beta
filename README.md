@@ -42,7 +42,7 @@ With the page ingested, I used an HTML Parser node to pull in the HTML contents.
 
 ### Output
 
-The two functions in this flow dump very simple output. First, if the number of vehicles running 2021.32.22 has changed since the last time it was reported, the function will dump the new value (as shown in this example)
+The two functions in this flow dump very simple output. First, if the number of vehicles running 2021.32.22 has changed since the last time it was reported, the first function will dump the new value (as shown in this example)
 
 `1336 on 32.22`
 
