@@ -40,7 +40,7 @@ The two functions in this flow dump very simple output. First, if the number of 
 
 `1336 on 32.22`
 
-Second, any time a Model 3 AWD LR is upgraded from 2021.32.22 to 2021.36.5.3, the second funtion will dump the details of that vehicle as a printed array, for example
+Second, any time a Model 3 AWD LR is upgraded from 2021.32.22 to 2021.36.5.3, the second function will dump the details of that vehicle as a printed array, for example
 
 `2021.32.22,Model 3 AWD LR,3.0,United States,1 day ago`
 
