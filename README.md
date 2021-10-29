@@ -66,4 +66,4 @@ If you let your imagination run wild, you could even use MQTT with a switch modu
 
 ### License
 
-This software is published under the Apache 2.0 license. Do whatever you please with it, but respect please TeslaScope's resources and wishes if they ask you to reduce the refresh frequency.
+This software is published under the Apache 2.0 license. Do whatever you please with it, but please respect TeslaScope's resources and wishes if they ask you to reduce the refresh frequency.
