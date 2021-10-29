@@ -60,7 +60,9 @@ Looking at the Timestamp node I use to kick off both functions, I configured the
 
 It is important to be respectful of other peoples' resources here.
 
-Finally, I terminated the functions with a print to the debug window, but it is up to you to do something different with the output. You may wish to trigger a pop-up on your phone, send yourself a text message, or post a message to or send a private message via Twitter. The debug window is just a dummy output that is useful for functional test but is not very useful beyond that. If you let your imagination run wild, you could even use MQTT with a switch module from Shelly to turn on a light under a bottle of Tesla Tequila. How awesome would that be as a way to find out the Beta rollout is expanding?
+Finally, I terminated the functions with a print to the debug window, but it is up to you to do something different with the output. You may wish to trigger a pop-up on your phone, send yourself a text message, or post a message to or send a private message via Twitter. The debug window is just a dummy output that is useful for functional test but is not very useful beyond that. A friend of mine had already linked his Node-RED instance to Twitter via the API, so it was easy to just give him this code and send the output to me via a private tweet.
+
+If you let your imagination run wild, you could even use MQTT with a switch module from Shelly to turn on a light under a bottle of Tesla Tequila. How awesome would that be as a way to find out the Beta rollout is expanding?
 
 ### License
 
