@@ -4,25 +4,29 @@ While waiting for Tesla to roll out Full Self Driving (FSD) Beta to my car, I wa
 
 ### The firmware update path from Production to Beta
 
-On September 25th, Tesla pushed firmware 2021.32.22 to every car with the FSD option purchased or an active FSD subscription. As drivers earned quailfying safety scores over a minimum distance traveled, Tesla started updating those vehicles with 2021.36.5. Some vehicles were updated from 2021.32.22 to 2021.32.25 but by and large, any vehicles that were upgraded from 2021.32.22 likely received an FSD Beta version. My car never left 2021.32.22, so I needed to watch that population fairly closely. Since any Tesla with FSD in the US could run 2021.32.22, though, I specifically wanted to know each time a vehicle similar to mine (Model 3 Long Range Dual Motor aka AWD) was upgraded from 2021.32.22 to 2021.36.5.3 aka FSD Beta 10.3.1.
+On September 25th, Tesla pushed firmware 2021.32.22 to every car with the FSD option purchased or an active FSD subscription. Owners needed to push a button indicating their desire to receive FSD Beta and their acceptance of the ground rules around testing it. Tesla started monitoring how safely the owners drove and started assigning Safety Scores. After a short while, Tesla moved a portion of the vehicles in the "FSD ready" population from 2021.32.22 to 2021.32.25, but most remained on 2021.32.22.
 
-Watching the population on 2021.32.22 change and detecting new FSD Beta deployments gave me an early indication of when Tesla was deploying FSD Beta to cars very similar to mine.
+Once drivers surpassed 100 miles with a perfect 100 Safety Score, Tesla started delivering FSD Beta to those vehicles by updating them to 2021.36.5. Some vehicles were updated from 2021.32.22 and some from 2021.32.25. My car never left 2021.32.22, so I watched that population fairly closely. Any Tesla that was "FSD ready" could run 2021.32.22 or 2021.32.25, though, so I also specifically wanted to know each time a vehicle similar to mine received FSD Beta.
+
+Watching the population on 2021.32.22 change combined with analyzing each new FSD Beta install gave me an early indication of when Tesla was deploying FSD Beta to cars very similar to mine.
 
 ### Node-RED
 
 Node-RED is a visual programming tool that greatly simplifies the act of assembling small, simple scripts. Node-RED also includes numerous modules (called Nodes) and integrations with external tools and sites. Node-RED enables rapid prototyping of functional code by dragging and dropping nodes onto the design space and allows for customization of the code using a variety of programming or scripting languages. A collection of Nodes that interoperate with one another on a single tab in the editor is called a flow. I have exported the flow that I built and published it here as json code.
 
-### How to use it
+### How to deploy my code
 
 Clone the repository, fire up Node-RED, click the 3-bar "hamburger" menu in the upper right corner, and click on Import. Navigate to the location where you cloned the repo and import the file. Open the debug window, click on the red Deploy button in the upper right corner, and you will see at least the first of the two example lines shown below in the Output section. You will see the number of vehicles running 2021.32.22 and any Model 3 LR AWDs that have recently been upgraded from 2021.32.22 to 2021.36.5.3.
 
 ### What is it designed to do?
 
-There are two primary purposes of the flow. First is to count the number of vehicles reported by the TeslaScope website as currently running 2021.32.22 -- the primary version that is ultimately upgraded to FSD Beta. Second, I wanted to receive a notification whenever a vehicle that is effectively identical to mine is upgraded from 2021.32.22 to 2021.36.5.3.
+There are two primary purposes of the flow. First is to report the number of vehicles reported by the TeslaScope website as currently running 2021.32.22 -- the primary version that is ultimately upgraded to FSD Beta. Second, I wanted to receive a notification whenever a vehicle that is effectively identical to mine is upgraded from 2021.32.22 to 2021.36.5.3.
 
 #### Vehicles Running 2021.32.22
 
-The first function requires ingesting TeslaScope's detail page for the 2021.32.22 firmware, found here: https://teslascope.com/teslapedia/software/2021.32.22
+The first function requires ingesting TeslaScope's detail page for the 2021.32.22 firmware, found here:
+
+https://teslascope.com/teslapedia/software/2021.32.22
 
 With the page ingested, I used an HTML Parser node to pull in the HTML contents of that page. I then used a Change node to only retain object 76 from the fetched page. That object contains a sentence showing the number of vehicles currently running this version. I then split the contents of that sentence into an array. Next, as I traverse the array, I convert each entry from a text string into a numeric value. If the resulting numeric value is greater than 0 (which only happens once), I convert the value back to a string and append the text " on 32.22" to the end and print it out. Finally, I pass the payload through a Filter node (previously called Replace By Exception or RBE). This ensures that the resulting message will be passed only if it has not changed. Then the payload is passed to the Debug node, which dumps the payload to the debug window.
 
@@ -30,7 +34,9 @@ With the page ingested, I used an HTML Parser node to pull in the HTML contents 
 
 It is important to note that the number of vehicles running 2021.32.22 is not enough to tell the whole story. That could be on any model Tesla. I also needed to see when a car just like mine received the upgrade I was waiting for.
 
-The second function in this flow requires ingesting TeslaScope's detail page for the 2021.36.5.3 firmware, found here https://teslascope.com/teslapedia/software/2021.36.5.3
+The second function in this flow requires ingesting TeslaScope's detail page for the 2021.36.5.3 firmware, found here
+
+https://teslascope.com/teslapedia/software/2021.36.5.3
 
 With the page ingested, I used an HTML Parser node to pull in the HTML contents. Then, I passed those contents on to a Change node that only retained object 174 on the page -- which is the table showing the detail of all vehicles that received that update. With the table captured, I ran it through a Split node to break it up into lines, a Function node that trims leading and trailing white space from all cells in each row, a Join node that converts the rows of trimmed cells into an array, a Switch node that only retains records where the first field matches 2021.32.22, and another Switch node that only retains records where the second field matches "Model 3 AWD LR". Once the records not pertaining to cars like mine being upgraded to FSD Beta are filtered out, I send the remaining records to a different Debug node which, again, sends the output to the debug window.
 
