@@ -1,6 +1,6 @@
 ## Background
 
-While waiting for Tesla to roll out Full Self Driving (FSD) Beta to my car, I was constantly refreshing web pages from websites like TeslaScope to find out how many cars were on each firmware revision and the prior version that the current version replaced. TeslaScope also shows the model and trim level of the vehicles receiving the updated firmware. I grew tired of refreshing two different web pages and trying to figure out for myself what, if anything, has changed. I knew there was a better way.
+While waiting for Tesla to roll out Full Self Driving (FSD) Beta to my car, I was constantly refreshing web pages from websites like TeslaScope to find out how many cars were on each firmware revision and the prior version that the current version replaced. TeslaScope also shows the model and trim level of the vehicles receiving the updated firmware. I grew tired of refreshing two different web pages and trying to figure out for myself what, if anything, has changed. I knew there was a better way to detect that Tesla was upgrading cars just like mine.
 
 ### The firmware update path from Production to Beta
 
